@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            x:Class="MauiApp2.Wyszukaj">  
+
+   <ScrollView>  
+       <VerticalStackLayout  
+           Padding="30,0"  
+           Spacing="25">
+           
+        
+            <Label  
+               Text="Zamów taksówke"  
+               Style="{StaticResource Headline}"  
+               SemanticProperties.HeadingLevel="Level1" />  
+
+           <DatePicker
+               x:Name="DatePicker"
+               Format="D"
+               HorizontalOptions="Fill" />
+
+           <TimePicker
+               x:Name="TimePicker"
+               Format="t"
+               HorizontalOptions="Fill" />
+     
+             <Label
+               x:Name="PassengerCountLabel"
+               Text="Liczba pasażerów: 1"
+               HorizontalOptions="Fill" />
+
+           <Stepper
+               x:Name="PassengerStepper"
+               Minimum="1"
+               Maximum="10"
+               Increment="1"
+               Value="1"
+               HorizontalOptions="Fill"
+               ValueChanged="OnPassengerStepperValueChanged" />
+
+         
+
+           <Label
+               Text="Planowany dystans podróży"
+               HorizontalOptions="Fill" />
+
+           <Grid>
+               <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="Auto" />
+                   <ColumnDefinition Width="*" />
+                   <ColumnDefinition Width="Auto" />
+               </Grid.ColumnDefinitions>
+               <Label
+                   x:Name="DistanceLabelSTART"
+                   Text="5km"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Grid.Column="0" />
+               <Slider
+                   x:Name="DistanceSlider"
+                   Minimum="0"
+                   Maximum="100"
+                   Value="50"
+                   HorizontalOptions="Fill"
+                   Grid.Column="1" />
+               <Label
+                   x:Name="DistanceLabelEND"
+                   Text="100km"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center"
+                   Grid.Column="2" />
+           </Grid>
+
+		  
+			   
+           <Picker  
+               x:Name="CityPickerStart"  
+               Title="Wybierz miasto startowy"  
+               HorizontalOptions="Fill">  
+               <Picker.ItemsSource>  
+                   <x:Array Type="{x:Type x:String}">  
+                       <x:String>Nysa</x:String>  
+                       <x:String>Głuchołazy</x:String>  
+                       <x:String>Prudnik</x:String>  
+                       <x:String>Jarnołówek</x:String>  
+                       <x:String>Warszawa</x:String>  
+                   </x:Array>  
+               </Picker.ItemsSource>  
+           </Picker>  
+
+           <Entry  
+               x:Name="STARTUL"  
+               Placeholder="Podaj ulice"  
+               HorizontalOptions="Fill" />  
+
+           <HorizontalStackLayout HorizontalOptions="Fill" VerticalOptions="Center">  
+               <Label  
+                   Text="Cel w innym mieście?"  
+                   VerticalOptions="Center" />  
+               <Switch  
+                   x:Name="AdditionalOptionsSwitch"  
+                   IsToggled="False"  
+                   OnColor="Green"  
+                   ThumbColor="White"  
+                   VerticalOptions="Center" 
+                   Toggled="OnAdditionalOptionsSwitchToggled" />  
+           </HorizontalStackLayout>  
+
+           <Picker  
+               x:Name="CityPickerEnd"  
+               Title="Wybierz miasto celu"  
+               HorizontalOptions="Fill"
+               IsVisible="False">  
+               <Picker.ItemsSource>  
+                   <x:Array Type="{x:Type x:String}">  
+                       <x:String>Nysa</x:String>  
+                       <x:String>Głuchołazy</x:String>  
+                       <x:String>Prudnik</x:String>  
+                       <x:String>Jarnołówek</x:String>  
+                       <x:String>Warszawa</x:String>  
+                   </x:Array>  
+               </Picker.ItemsSource>  
+           </Picker>  
+
+           <Entry  
+               x:Name="ENDUL"  
+               Placeholder="Podaj cel: ulica nr domu"  
+               HorizontalOptions="Fill" />  
+
+           <RadioButton
+               x:Name="DriverRadioButton"
+               Content="Janusz Kowalski"
+               GroupName="Drivers"
+               HorizontalOptions="Fill" />
+           <RadioButton
+               x:Name="DriverRadioButton1"
+               Content="Mariusz Pudzianowski"
+               GroupName="Drivers"
+               HorizontalOptions="Fill" />
+           <RadioButton
+               x:Name="DriverRadioButton2"
+               Content="Domino Jachaś"
+               GroupName="Drivers"
+               HorizontalOptions="Fill" />
+           <RadioButton
+               x:Name="DriverRadioButton3"
+               Content="Jarosław Kaczyński"
+               GroupName="Drivers"
+               HorizontalOptions="Fill" />
+
+           <Editor  
+               x:Name="SearchEditorEND"  
+               Placeholder="Dodatkowe informacje dla kierowcy (max 200 znaków)"  
+               AutoSize="TextChanges"  
+               HeightRequest="200"  
+               MaxLength="200" />  
+
+           <Button  
+               x:Name="CounterBtn"  
+               Text="Zamów taksóweczke"  
+               SemanticProperties.Hint="Counts the number of times you click"  
+               Clicked="OnCounterClicked"  
+               HorizontalOptions="Fill" />
+           
+            <ProgressBar
+            x:Name="OrderProgressBar"
+            Progress="0"
+            HorizontalOptions="Fill"
+            VerticalOptions="Center"
+            Margin="0,10,0,0" />
+            <WebView
+x:Name="WebView"
+Source="https://www.google.pl/maps/"
+HeightRequest="500"
+HorizontalOptions="Fill"
+VerticalOptions="FillAndExpand"
+Margin="0,20,0,0" />
+
+
+
+        </VerticalStackLayout>  
+   </ScrollView>  
+
+</ContentPage>
